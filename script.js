@@ -9,7 +9,9 @@ function createGrid() {
         grid.appendChild(box);
     }
 
-    grid.addEventListener('mouseover', function(e){
-        e.target.style.backgroundColor = "black";
-    });
+    grid.addEventListener('mouseover', sketch);
 }
+
+function sketch(e) {
+    e.target.style.backgroundColor = "black";
+};
