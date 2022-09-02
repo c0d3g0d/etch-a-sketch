@@ -1,11 +1,23 @@
 createGrid();
 
-function createGrid() {
-    const grid = document.querySelector(".grid");
+function createGrid(gridLength = 16) {
+    const WIDTH = 540;
 
-    for (let i = 0; i < 256; i++) {
+
+    const boxSize = `${WIDTH / gridLength}px`;
+
+    const grid = document.querySelector('.grid');
+    grid.style.width = `${WIDTH}px`;
+    grid.textContent = '';
+
+
+
+    for (let i = 0; i < gridLength ** 2; i++) {
+
         const box = document.createElement('div');
         box.classList.add('box');
+        box.style.width = boxSize;
+        box.style.height = boxSize;
         grid.appendChild(box);
     }
 
@@ -15,3 +27,14 @@ function createGrid() {
 function sketch(e) {
     e.target.style.backgroundColor = "black";
 };
+
+function setGridLength() {
+
+    let gridLength = 16;
+    do {
+        gridLength = prompt("Enter a valid grid size (between 10 and 100): ", 10) || 16;
+    }
+    while (gridLength < 10 || gridLength > 100);
+
+    createGrid(gridLength);
+}
