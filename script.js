@@ -25,7 +25,11 @@ function createGrid(gridLength = 16) {
 }
 
 function sketch(e) {
-    e.target.style.backgroundColor = "black";
+    const RED = Math.floor(Math.random() * 256);
+    const GREEN = Math.floor(Math.random() * 256);
+    const BLUE = Math.floor(Math.random() * 256);
+
+    e.target.style.backgroundColor = `rgb(${RED}, ${GREEN}, ${BLUE})`;
 };
 
 function setGridLength() {
