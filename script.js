@@ -18,10 +18,9 @@ function createGrid(gridLength = 16) {
         box.classList.add('box');
         box.style.width = boxSize;
         box.style.height = boxSize;
+        box.addEventListener('mouseover', sketch);
         grid.appendChild(box);
     }
-
-    grid.addEventListener('mouseover', sketch);
 }
 
 function sketch(e) {
@@ -29,7 +28,22 @@ function sketch(e) {
     const GREEN = Math.floor(Math.random() * 256);
     const BLUE = Math.floor(Math.random() * 256);
 
-    e.target.style.backgroundColor = `rgb(${RED}, ${GREEN}, ${BLUE})`;
+    let alphaVal = Number(e.target.getAttribute('alpha'));
+    let rgbStr = `${RED}, ${GREEN}, ${BLUE}`;
+
+    if (alphaVal) {
+        alphaVal += 0.1;
+        rgbStr = e.target.getAttribute('rgbStr');
+        e.target.setAttribute('alpha', alphaVal);
+        e.target.style['background-color'] = `rgba(${rgbStr}, ${alphaVal})`;
+
+    }
+    else {
+        alphaVal = 0.1;
+        e.target.setAttribute('alpha', alphaVal);
+        e.target.setAttribute('rgbStr', rgbStr);
+        e.target.style['background-color'] = `rgba(${rgbStr}, ${alphaVal})`;
+    }
 };
 
 function setGridLength() {
