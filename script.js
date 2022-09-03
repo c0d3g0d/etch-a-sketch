@@ -1,7 +1,7 @@
 createGrid();
 
 function createGrid(gridLength = 16) {
-    const WIDTH = 540;
+    const WIDTH = 500;
 
 
     const boxSize = `${WIDTH / gridLength}px`;
