@@ -18,7 +18,16 @@ function createGrid(gridLength = 16) {
         box.classList.add('box');
         box.style.width = boxSize;
         box.style.height = boxSize;
-        box.addEventListener('mouseover', sketch);
+
+        box.addEventListener('mouseover', sketch);      // mouse events to start and stop sketching
+        grid.addEventListener('mouseup', function(){
+            box.addEventListener('mouseover', sketch);
+        });
+        grid.addEventListener('mousedown', function(){
+            box.removeEventListener('mouseover', sketch);
+        });
+
+
         grid.appendChild(box);
     }
 }
